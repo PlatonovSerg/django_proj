@@ -185,4 +185,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://platonov1727.ru/admin/",
     "https://platonov1727.ru/blog/",
     "https://platonov1727.ru/blog/",
+    "localhost:8000",
+    "localhost",
+    "http://localhost:8000",
+    "http://localhost",
 ]
