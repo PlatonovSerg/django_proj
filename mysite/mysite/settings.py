@@ -37,7 +37,7 @@ ALLOWED_HOSTS = [
     "http://51.250.32.232",
     "::1",
     "platonov1727.ru",
-    "platonov1727.ru/blog"
+    "platonov1727.ru/blog",
 ]
 
 
@@ -159,9 +159,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-
-# Email settings SMTP
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
