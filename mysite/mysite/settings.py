@@ -178,4 +178,10 @@ CSRF_TRUSTED_ORIGINS = [
     "platonov1727.ru",
     "http://51.250.36.19/admin/",
     "http://51.250.36.19/blog/",
+    "http://platonov1727.ru",
+    "https://platonov1727.ru",
+    "http://platonov1727.ru/admin",
+    "http://platonov1727.ru/blog",
+    "https://platonov1727.ru/admin/",
+    "https://platonov1727.ru/blog/",
 ]
