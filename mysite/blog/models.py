@@ -1,7 +1,7 @@
-from django.db import models
-from django.utils import timezone
 from django.contrib.auth import get_user_model
+from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from taggit.managers import TaggableManager
 
 User = get_user_model()

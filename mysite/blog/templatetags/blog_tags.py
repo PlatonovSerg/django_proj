@@ -1,9 +1,10 @@
+import markdown
 from django import template
-from ..models import Post
-from taggit.models import Tag
 from django.db.models import Count
 from django.utils.safestring import mark_safe
-import markdown
+from taggit.models import Tag
+
+from ..models import Post
 
 register = template.Library()
 
