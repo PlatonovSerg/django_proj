@@ -28,7 +28,14 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*", "localhost", "127.0.0.1", "0.0.0.0"]
+ALLOWED_HOSTS = [
+    "*",
+    "localhost",
+    "127.0.0.1",
+    "0.0.0.0",
+    "51.250.36.19",
+    "::1",
+]
 
 
 # Application definition
@@ -164,3 +171,9 @@ EMAIL_HOST_USER = (os.getenv("EMAIL_HOST_USER", ""),)
 EMAIL_HOST_PASSWORD = (os.getenv("EMAIL_HOST_PASSWORD", ""),)
 
 # wzqrdbwagswzyfcv
+CSRF_TRUSTED_ORIGINS = [
+    "http://51.250.36.19",
+    "platonov1727.ru",
+    "http://51.250.36.19/admin/",
+    "http://51.250.36.19/blog/",
+]
