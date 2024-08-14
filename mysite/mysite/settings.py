@@ -33,7 +33,8 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "0.0.0.0",
-    "51.250.36.19",
+    "51.250.32.232",
+    "http://51.250.32.232",
     "::1",
     "platonov1727.ru",
     "platonov1727.ru/blog"
@@ -172,12 +173,12 @@ EMAIL_USE_SSL = (os.getenv("EMAIL_USE_SSL", ""),)
 EMAIL_HOST_USER = (os.getenv("EMAIL_HOST_USER", ""),)
 EMAIL_HOST_PASSWORD = (os.getenv("EMAIL_HOST_PASSWORD", ""),)
 
-# wzqrdbwagswzyfcv
+
 CSRF_TRUSTED_ORIGINS = [
-    "http://51.250.36.19",
+    "http://51.250.32.232",
     "platonov1727.ru",
-    "http://51.250.36.19/admin/",
-    "http://51.250.36.19/blog/",
+    "http://51.250.32.232/admin/",
+    "http://51.250.32.232/blog/",
     "http://platonov1727.ru",
     "https://platonov1727.ru",
     "http://platonov1727.ru/admin",
