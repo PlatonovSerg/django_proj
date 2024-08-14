@@ -88,8 +88,8 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
-        source: "docker-compose.prod.yml"
-        target: "blog"
+        source: "./mysite/docker-compose.prod.yml"
+        target: "mysite"
     - name: Executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
       with:
