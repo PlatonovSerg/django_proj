@@ -35,6 +35,8 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
     "51.250.36.19",
     "::1",
+    "platonov1727.ru",
+    "platonov1727.ru/blog"
 ]
 
 
