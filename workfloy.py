@@ -1,0 +1,107 @@
+# .github/workflows/main.yml
+name: Main Taski workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Копируем код проекта
+    - name: Check out code
+      uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+    # В action setup-python@v4 передаём параметр — версию Python
+      with:
+        python-version: 3.9
+    # Обновляем pip, устанавливаем flake8 и flake8-isort, 
+    # устанавливаем зависимости проекта
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip 
+        pip install flake8==6.0.0 flake8-isort==6.0.0
+    # Запускаем flake8
+    - name: Test with flake8
+      run: python -m flake8 mysite/
+  build_and_push_to_docker_hub:
+    name: Push Docker image to DockerHub
+    runs-on: ubuntu-latest
+    needs: tests
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to Docker 
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push to DockerHub
+        uses: docker/build-push-action@v4
+        with:
+          context: ./mysite/
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/blog:latest 
+  build_gateway_and_push_to_docker_hub:
+    name: Push gateway Docker image to DockerHub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to Docker 
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push to DockerHub
+        uses: docker/build-push-action@v4
+        with:
+          context: ./mysite/gateway/
+          push: true
+          # Тут вместо username должен быть ваш логин на Docker Hub
+          tags: ${{ secrets.DOCKER_USERNAME }}/gateway:latest 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: 
+      # Дождёмся билда всех образов blog
+      - build_and_push_to_docker_hub
+      - build_gateway_and_push_to_docker_hub
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+    # Копируем docker-compose.prod.yml на продакшен-сервер
+    - name: Copy docker-compose.yml via ssh
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        source: "./mysite/docker-compose.prod.yml"
+        target: "blog"
+    - name: Executing remote ssh commands to deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        script: |
+          cd blog
+          # Выполняет pull образов с Docker Hub
+          sudo docker compose -f docker-compose.prod.yml pull
+          # Перезапускает все контейнеры в Docker Compose
+          sudo docker compose -f docker-compose.prod.yml down
+          sudo docker compose -f docker-compose.prod.yml up -d
+          # Выполняет миграции и сбор статики
+          sudo docker compose -f docker-compose.prod.yml exec backend python manage.py migrate
+          sudo docker compose -f docker-compose.prod.yml exec backend python manage.py collectstatic
+          sudo docker compose -f docker-compose.prod.yml exec backend cp -r ./staticfiles/. /static/ 
