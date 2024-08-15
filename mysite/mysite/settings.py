@@ -172,9 +172,9 @@ EMAIL_HOST_PASSWORD = (os.getenv("EMAIL_HOST_PASSWORD", ""),)
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://51.250.32.232",
-    "http://51.250.32.232/admin/",
-    "http://51.250.32.232/blog/",
+    "http://51.250.36.237",
+    "http://51.250.36.237/admin/",
+    "http://51.250.36.237/blog/",
     "http://platonov1727.ru",
     "https://platonov1727.ru",
     "http://platonov1727.ru/admin",
