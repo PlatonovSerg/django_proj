@@ -20,6 +20,6 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
-        source: "docker-compose.productions.yml"
+        source: "docker-compose.production.yml"
         target: "blog"
    
