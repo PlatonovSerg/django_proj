@@ -83,7 +83,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
-        key: ${{ secrets.SSH_KEY }}
+        password: prioritet
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         source: "docker-compose.prod.yml"
         target: "blog"
