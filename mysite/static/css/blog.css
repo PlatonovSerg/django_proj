@@ -1,98 +1,121 @@
+/* Основные стили */
 body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    font-family: helvetica, sans-serif;
-}
-
-a {
-    color: #00abff;
-    text-decoration: none;
-}
-
-h1 {
-    font-weight: normal;
-    border-bottom: 1px solid #bbb;
-    padding: 0 0 10px 0;
-}
-
-h2 {
-    font-weight: normal;
-    margin: 30px 0 0;
+    background-color: #f4f4f4;
 }
 
 #content {
-    float: left;
-    width: 60%;
-    padding: 0 0 0 30px;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #sidebar {
-    float: right;
-    width: 30%;
-    padding: 10px;
-    background: #efefef;
-    height: 100vh;
+    background: #eaeaea;
+    padding: 20px;
+    margin-top: 20px;
 }
 
-p.date {
-    color: #ccc;
-    font-family: georgia, serif;
-    font-size: 12px;
-    font-style: italic;
-}
-
-/* pagination */
-.pagination {
-    margin: 40px 0;
-    font-weight: bold;
-}
-
-/* forms */
-label {
-    float: left;
-    clear: both;
+h1, h2, h3 {
     color: #333;
-    margin-bottom: 4px;
 }
 
-input,
-textarea {
-    clear: both;
-    float: left;
-    margin: 0 0 10px;
-    background: #ededed;
-    border: 0;
-    padding: 6px 10px;
-    font-size: 12px;
+a {
+    color: #0077cc;
+    text-decoration: none;
 }
 
-input[type=submit] {
-    font-weight: bold;
-    background: #00abff;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 14px;
-    text-transform: uppercase;
+a:hover {
+    text-decoration: underline;
 }
 
-.errorlist {
-    color: #cc0033;
-    float: left;
-    clear: both;
-    padding-left: 10px;
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
 }
 
-/* comments */
 .comment {
+    margin-bottom: 20px;
     padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
 }
 
-.comment:nth-child(even) {
-    background: #efefef;
+/* Адаптивные стили */
+@media (max-width: 1200px) {
+    #content {
+        max-width: 80%;
+        padding: 15px;
+    }
+
+    #sidebar {
+        margin-top: 15px;
+    }
 }
 
-.comment .info {
-    font-weight: bold;
-    font-size: 12px;
-    color: #666;
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    #content {
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    #sidebar {
+        margin-top: 10px;
+        padding: 15px;
+    }
+
+    .pagination {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pagination a, .pagination span.current {
+        margin-bottom: 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.5em;
+    }
+
+    p, .comment p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    #content {
+        width: 100%;
+        padding: 10px;
+    }
+
+    #sidebar {
+        padding: 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.2em;
+    }
+
+    p, .comment p {
+        font-size: 0.9em;
+    }
+
+    .pagination {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pagination a, .pagination span.current {
+        margin-bottom: 8px;
+    }
 }

@@ -33,8 +33,8 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "0.0.0.0",
-    "51.250.32.232",
-    "http://51.250.32.232",
+    "51.250.36.237",
+    "http://51.250.36.237",
     "::1",
     "platonov1727.ru",
     "platonov1727.ru/blog",
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "blog.apps.BlogConfig",
     "taggit",
-    # "django.contrib.sites",
+    "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.postgres",
 ]
@@ -95,7 +95,7 @@ if DEBUG is True:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": "/data/db.sqlite3",
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
 else:
