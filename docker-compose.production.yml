@@ -16,7 +16,7 @@ services:
     image: platonov1727/blog:latest
     env_file: .env
     volumes:
-      - static_volume:/static/
+      - static_volume:/backend_static/
   gateway:
     image: platonov1727/gateway:latest
     env_file: .env
