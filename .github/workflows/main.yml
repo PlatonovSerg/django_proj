@@ -87,7 +87,6 @@ jobs:
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         source: "./mysite/docker-compose.prod.yml"
         target: "blog"
-        overwrite: --overwrite
     - name: Executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
       with:
