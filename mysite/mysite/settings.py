@@ -38,6 +38,7 @@ ALLOWED_HOSTS = [
     "::1",
     "platonov1727.ru",
     "platonov1727.ru/blog",
+    "platonov1727.ru/admin",
 ]
 
 
@@ -52,7 +53,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "blog.apps.BlogConfig",
     "taggit",
-    "django.contrib.sites",
+    # "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.postgres",
 ]
@@ -176,12 +177,12 @@ CSRF_TRUSTED_ORIGINS = [
     "http://51.250.36.237/admin/",
     "http://51.250.36.237/blog/",
     "http://platonov1727.ru",
-    "https://platonov1727.ru",
-    "http://platonov1727.ru/admin",
     "http://platonov1727.ru/blog",
+    "http://platonov1727.ru/admin",
+    "http://localhost:8000",
+    "http://localhost",
+    "https://platonov1727.ru",
     "https://platonov1727.ru/admin/",
     "https://platonov1727.ru/blog/",
     "https://platonov1727.ru/blog/",
-    "http://localhost:8000",
-    "http://localhost",
 ]
