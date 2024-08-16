@@ -7,6 +7,10 @@ body {
     background-color: #f4f4f4;
 }
 
+.post {
+    border-bottom: #0077cc 1px;
+}
+
 #content {
     max-width: 900px;
     margin: 20px auto;
