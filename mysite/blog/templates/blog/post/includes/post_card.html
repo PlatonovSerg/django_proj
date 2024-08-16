@@ -1,0 +1,32 @@
+{% load blog_tags %}
+
+  <div class="container mt-6">
+    <div class="row g-0 border rounded overflow-hidden shadow-sm h-md-250 position-relative">
+        <div class="col-auto d-none d-lg-block">
+          {% if post.image %}
+          <img src="{{ post.image.url }}" alt="Post image" class="img-fluid" style="width: 400px; height: 300px; object-fit: cover;">
+          {% else %}
+            <img src="https://via.placeholder.com/400x300" alt="Post image" class="img-fluid" style="width: 400px; height: 300px; object-fit: cover;">
+            {% endif %}
+            <div class="position-absolute top-0 start-0 p-2 bg-dark text-white rounded-end">
+                <i class="bi bi-clock"></i> {{post.publish}}
+            </div>
+        </div>
+        <div class="col p-4 d-flex flex-column position-static">
+            <h4 class="mb-2 text-dark">
+              <a class="text-dark" href="{{post.get_absolute_url}}">{{post.title}}</a>
+            </h4> 
+            <p class="mb-1 text-primary">
+                <i class="bi bi-file-earmark-text"></i> {% include "./tags.html" %} |
+                <i class="bi bi-person"></i>{{post.author}}
+                {% with comments.count as total_comments %}
+                <i class="bi bi-chat"></i>
+                  {{ total_comments }} <i class="bi bi-chat-left-dots"></i>{{ total_comments|pluralize }}
+                {% endwith %}
+            </p>
+            <p class="card-text mb-auto">
+                {{post.body|markdown|truncatewords:30}}
+            </p>
+        </div>
+    </div>
+</div>

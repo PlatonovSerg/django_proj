@@ -35,6 +35,7 @@ class Post(models.Model):
     objects = models.Manager()
     published = PublishManager()
     tags = TaggableManager()
+    image = models.ImageField(upload_to='posts/%Y/%m/%d/', blank=True) 
 
     class Meta:
         ordering = ["-publish"]
