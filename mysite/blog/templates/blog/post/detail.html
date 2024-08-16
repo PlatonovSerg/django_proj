@@ -5,6 +5,7 @@
 {% block content %}
 
 <h1>{{post.title}}</h1>
+<a href="{% url 'blog:post_list' %}">к постам</a>
 <p class="date">
     Опубликованно {{ post.publish }} by {{post.author}}
 </p>
