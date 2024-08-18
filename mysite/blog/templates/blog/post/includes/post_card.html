@@ -1,6 +1,6 @@
 {% load blog_tags %}
 
-  <div class="container mt-6">
+  <div class="container mt-6 col-md-12">
     <div class="row g-0 border rounded overflow-hidden shadow-sm h-md-250 position-relative">
         <div class="col-auto d-none d-lg-block">
           {% if post.image %}
@@ -16,12 +16,15 @@
             <h4 class="mb-2 text-dark">
               <a class="text-dark" href="{{post.get_absolute_url}}">{{post.title}}</a>
             </h4> 
-            <p class="mb-1 text-primary">
-                <i class="bi bi-file-earmark-text"></i> {% include "./tags.html" %} |
-                <i class="bi bi-person"></i>{{post.author}}
-                {% with comments.count as total_comments %}
+            <p class="mb-1 text-dark">
+              <i class="bi bi-file-earmark-text"></i> {% include "./tags.html" %} |
+              <i class="bi bi-person"></i>{{post.author}}
+              
+              {% with post.comments.count as total_comments %}
+              
+              <a class="text-dark" href="{{post.get_absolute_url}}">
                 <i class="bi bi-chat"></i>
-                  {{ total_comments }} <i class="bi bi-chat-left-dots"></i>{{ total_comments|pluralize }}
+                {{ total_comments }}</a>
                 {% endwith %}
             </p>
             <p class="card-text mb-auto">
