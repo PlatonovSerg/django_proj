@@ -25,7 +25,7 @@
                 <a href="{% url 'blog:post_list' %}" class="btn btn-secondary">
                     <i class="bi bi-arrow-left"></i> К постам
                 </a>
-                <a href="{% url "blog:post_share" post.id %}" class="btn btn-primary">
+                <a href="{% url "blog:post_share" post.id %}" class="btn btn-dark">
                     <i class="bi bi-share"></i> Поделиться постом
                 </a>
             </div>
@@ -45,8 +45,8 @@
 
             <div class="mb-5">
                 {% with comments.count as total_comments %}
-                <h2> Комментарии:</h2>
-                {{ total_comments }}
+                <h4> Комментарии: <i class="bi bi-chat"></i> {{ total_comments }}</h4>
+                
                 {% endwith %}
 
                 {% for comment in comments %}
