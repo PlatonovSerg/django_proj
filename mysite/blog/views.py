@@ -82,8 +82,6 @@ def post_share(request, post_id):
                 f"{cd['name']}'s comments: {cd['comments']}"
             )
             try:
-
-                print(os.getenv("EMAIL_HOST"))
                 send_mail(
                     subject,
                     message,
