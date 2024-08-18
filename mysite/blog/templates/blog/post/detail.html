@@ -3,42 +3,68 @@
 {% block title %}{{post.title}}{% endblock title %}
 
 {% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="mb-3">{{ post.title }}</h1>
+            <p class="text-muted">
+                Опубликовано {{ post.publish }} by {{ post.author }}
+            </p>
 
-<h1>{{post.title}}</h1>
-<a href="{% url 'blog:post_list' %}">к постам</a>
-<p class="date">
-    Опубликованно {{ post.publish }} by {{post.author}}
-</p>
+            <div class="mb-4">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid rounded mb-3" style="width: 100%; max-height: 500px; object-fit: cover;">
+                {% endif %}
+            </div>
 
-{{ post.body|markdown}}
+            <div class="post-content mb-5">
+                {{ post.body|markdown }}
+            </div>
 
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <a href="{% url 'blog:post_list' %}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> К постам
+                </a>
+                <a href="{% url "blog:post_share" post.id %}" class="btn btn-primary">
+                    <i class="bi bi-share"></i> Поделиться постом
+                </a>
+            </div>
 
-<p>
-    <a href="{% url "blog:post_share" post.id %}">
-        Поделиться постом
-    </a> </p>
-    <h2>Похожие посты</h2>
-    {% for post in similar_posts  %}
-        <p>
-            <a href=" {{post.get_absolute_url}} "> {{post.title}} </a>
-        </p>
-    {%empty%}
-    Нет похожих постов
-    {% endfor %}
-    {% with comments.count as total_comments %}
-<h2>
-{{ total_comments }} comment{{ total_comments|pluralize }}
-</h2>
-{% endwith %}
+            <div class="mb-5">
+                <h2>Похожие посты</h2>
+                <div class="list-group">
+                    {% for post in similar_posts %}
+                    <a href="{{ post.get_absolute_url }}" class="list-group-item list-group-item-action">
+                        {{ post.title }}
+                    </a>
+                    {% empty %}
+                    <p class="text-muted">Нет похожих постов</p>
+                    {% endfor %}
+                </div>
+            </div>
 
-{% for comment in comments %} <div class="comment">
-    <p class="info">
-    Комментарий {{ forloop.counter }} от {{ comment.name }} {{ comment.created }}
-    </p>
-    {{ comment.body|linebreaks }}
+            <div class="mb-5">
+                {% with comments.count as total_comments %}
+                <h2> Комментарии:</h2>
+                {{ total_comments }}
+                {% endwith %}
+
+                {% for comment in comments %}
+                <div class="comment mb-4">
+                    <p class="info">
+                        <strong>{{ comment.name }}</strong> - {{ comment.created|date:"d M Y, H:i" }}
+                    </p>
+                    <p>{{ comment.body|linebreaks }}</p>
+                </div>
+                {% empty %}
+                <p class="text-muted">Пока нет комментариев</p>
+                {% endfor %}
+
+                <div>
+                    {% include "blog/post/includes/comment_form.html" %}
+                </div>
+            </div>
+        </div>
     </div>
-    {% empty %}
-    <p>Пока нет комментариев</p>
-    {% endfor %}
-    {% include "blog/post/includes/comment_form.html" %}
+</div>
 {% endblock content %}
