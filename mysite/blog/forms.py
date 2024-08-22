@@ -4,9 +4,9 @@ from .models import Comment
 
 
 class EmailPostForm(forms.Form):
-    name = forms.CharField(max_length=25)
-    email = forms.EmailField()
-    to = forms.EmailField()
+    name = forms.CharField(max_length=25, widget=forms.TextInput)
+    email = forms.EmailField(widget=forms.EmailInput)
+    to = forms.EmailField(widget=forms.EmailInput)
     comments = forms.CharField(required=False, widget=forms.Textarea)
 
 
