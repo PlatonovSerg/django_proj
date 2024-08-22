@@ -27,8 +27,8 @@
                 {{ total_comments }}</a>
                 {% endwith %}
             </p>
-            <p class="card-text mb-auto">
-                {{post.body|markdown|truncatewords:30}}
+            <p class="card-text mb-2m">
+                {{post.body|markdown|truncatewords_html:20}}
             </p>
         </div>
     </div>

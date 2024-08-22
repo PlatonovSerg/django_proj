@@ -1,15 +1,37 @@
 {% extends "blog/base.html" %}
+{% load form_tags %}
+{% block title %}Поделиться постом{% endblock %}
 
-{% block title %}Share a post{% endblock %}
-{% block content %} {% if sent %}
-<h1>E-mail successfully sent</h1> <p>
-{{ post.title }}" was successfully sent
-to {{ form.cleaned_data.to }}.
-</p>
-{% else %}
-<h1>Share "{{ post.title }}" by e-mail</h1> <form method="post">
-{{ form.as_p }}
-{% csrf_token %}
-<input type="submit" value="Send e-mail">
-</form>
-{% endif %} {% endblock %}
+{% block content %}
+<div class="container mt-5 mb-3">
+    {% if sent %}
+        <div class="alert alert-success" role="alert">
+            <h1 class="alert-heading">E-mail успешно отправлен!</h1>
+            <p>Пост "{{ post.title }}" был успешно отправлен на адрес {{ form.cleaned_data.to }}.</p>
+        </div>
+        <a href="{% url 'blog:post_detail' post.slug %}" class="btn btn-primary mt-3">Вернуться к посту</a>
+    {% else %}
+        <h1>Отправить "{{ post.title }}" по e-mail</h1>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_name" class="form-label">Ваше имя</label>
+                {{ form.name|add_class:"form-control" }}
+            </div>
+            <div class="mb-3">
+                <label for="id_email" class="form-label">Ваш email</label>
+                {{ form.email|add_class:"form-control" }}
+            </div>
+            <div class="mb-3">
+                <label for="id_to" class="form-label">Получатель</label>
+                {{ form.to|add_class:"form-control" }}
+            </div>
+            <div class="mb-3">
+                <label for="id_to" class="form-label">Комментарий</label>
+                {{ form.comments|add_class:"form-control" }}
+            </div>
+            <button type="submit" class="btn btn-dark">Отправить e-mail</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}
