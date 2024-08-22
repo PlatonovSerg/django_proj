@@ -8,16 +8,11 @@ SECRET_KEY = (os.getenv("SECRET_KEY"), "")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "*",
-    "localhost",
-    "127.0.0.1",
-    "0.0.0.0",
-    "::1",
     "platonov1727.ru",
-    "platonov1727.ru/blog",
-    "platonov1727.ru/admin",
+    "127.0.0.1",
 ]
 
+SITE_ID = 1
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -28,7 +23,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "blog.apps.BlogConfig",
     "taggit",
-    # "django.contrib.sites",
+    "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.postgres",
 ]
@@ -136,16 +131,10 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = os.getenv("EMAIL_HOST_USER")
 SERVER_EMAIL = os.getenv("EMAIL_HOST_USER")
 EMAIL_ADMIN = os.getenv("EMAIL_HOST_USER")
+EMAIL_USE_TLS = False
 
 
 CSRF_TRUSTED_ORIGINS = [
     "http://platonov1727.ru",
-    "http://platonov1727.ru/blog",
-    "http://platonov1727.ru/admin",
-    "http://localhost:8000",
-    "http://localhost",
     "https://platonov1727.ru",
-    "https://platonov1727.ru/admin/",
-    "https://platonov1727.ru/blog/",
-    "https://platonov1727.ru/blog/",
 ]
