@@ -16,12 +16,12 @@ services:
     env_file: .env
     volumes:
       - static_volume:/backend_static/
-      - media:app/media/
+      - media:/app/media/
   gateway:
     image: platonov1727/gateway:latest
     env_file: .env
     volumes:
       - static_volume:/staticfiles/
-      - media:app/media/
+      - media:/app/media/
     ports:
       - 8000:80
