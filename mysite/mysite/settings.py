@@ -9,7 +9,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     "platonov1727.ru",
-    "127.0.0.1",
+    "www.platonov1727.ru"
 ]
 
 SITE_ID = 1
