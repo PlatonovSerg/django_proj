@@ -11,7 +11,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "platonov1727.ru",
     "backend.mysite.orb.local",
-    "*"
+    "*",
 ]
 
 SITE_ID = 1
@@ -140,8 +140,7 @@ EMAIL_ADMIN = os.getenv("EMAIL_HOST_USER")
 CSRF_TRUSTED_ORIGINS = [
     "http://platonov1727.ru",
     "https://platonov1727.ru",
-    "https://backend.mysite.orb.local"
+    "https://backend.mysite.orb.local",
 ]
 
 YANDEX_METRICA_COUNTER_ID = os.getenv("YANDEX_METRICA_COUNTER_ID")
-# hello
