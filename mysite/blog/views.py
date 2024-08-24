@@ -85,7 +85,7 @@ def post_share(request, post_id):
                 send_mail(
                     subject,
                     message,
-                    cd['email'],
+                    cd["email"],
                     [cd["to"]],
                 )
                 sent = True
