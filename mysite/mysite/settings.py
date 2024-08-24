@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.postgres",
+    "analytical",
 ]
 
 
@@ -138,3 +139,5 @@ CSRF_TRUSTED_ORIGINS = [
     "http://platonov1727.ru",
     "https://platonov1727.ru",
 ]
+
+YANDEX_METRICA_COUNTER_ID = os.getenv('YANDEX_METRICA_COUNTER_ID')
