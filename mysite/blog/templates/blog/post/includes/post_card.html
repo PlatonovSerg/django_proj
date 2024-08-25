@@ -2,7 +2,7 @@
 
   <div class="container mt-6 col-md-12">
     <div class="row g-0 border rounded overflow-hidden shadow-sm h-md-250 position-relative">
-        <div class="col-auto d-none d-lg-block">
+        <div class="col-auto  d-lg-block">
           {% if post.image %}
           <img src="{{ post.image.url }}" alt="Post image" class="img-fluid" style="width: 400px; height: 300px; object-fit: cover;">
           {% else %}
@@ -27,9 +27,11 @@
                 {{ total_comments }}</a>
                 {% endwith %}
             </p>
-            <p class="card-text mb-2m">
+            <div class="d-none d-lg-block" >
+            <p class="card-text d-none mb-2m ">
                 {{post.body|markdown|truncatewords_html:20}}
             </p>
+          </div>
         </div>
     </div>
 </div>
