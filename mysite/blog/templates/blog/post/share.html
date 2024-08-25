@@ -5,11 +5,11 @@
 {% block content %}
 <div class="container mt-5 mb-3">
     {% if sent %}
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-secondary" role="alert">
             <h1 class="alert-heading">E-mail успешно отправлен!</h1>
             <p>Пост "{{ post.title }}" был успешно отправлен на адрес {{ form.cleaned_data.to }}.</p>
         </div>
-        <a href="{% url 'blog:post_list' %}" class="btn btn-primary mt-3">Вернуться к постам</a>
+        <a href="{% url 'blog:post_list' %}" class="btn btn-dark mt-3">Вернуться к постам</a>
     {% else %}
         <h1>Отправить "{{ post.title }}" по e-mail</h1>
         <form method="post" class="mt-4">
