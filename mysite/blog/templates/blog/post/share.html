@@ -9,7 +9,7 @@
             <h1 class="alert-heading">E-mail успешно отправлен!</h1>
             <p>Пост "{{ post.title }}" был успешно отправлен на адрес {{ form.cleaned_data.to }}.</p>
         </div>
-        <a href="{% url 'blog:post_detail' post.slug %}" class="btn btn-primary mt-3">Вернуться к посту</a>
+        <a href="{% url 'blog:post_detail' post.get_absolute_url %}" class="btn btn-primary mt-3">Вернуться к посту</a>
     {% else %}
         <h1>Отправить "{{ post.title }}" по e-mail</h1>
         <form method="post" class="mt-4">
