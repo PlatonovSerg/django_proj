@@ -8,7 +8,7 @@
 {% if query %}
     <h3>
         {% with results.count as total_results %}
-        Найдено {{ total_results }} результат{{ total_results|pluralize:"результат, результата, результатов" }}
+        Найдено {{ total_results }} {{ total_results|pluralize:"результат, результата, результатов" }}
         {% endwith %}
     </h3>
     {% for post in results %}
