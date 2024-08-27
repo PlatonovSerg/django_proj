@@ -1,5 +1,4 @@
 pre {
-    background-color: #f5f5f5; /* Светло-серый фон для блока pre */
     padding: 15px;            /* Внутренний отступ для текста */
     border-radius: 5px;       /* Скругленные углы */
     font-size: 14px;          /* Размер шрифта */
@@ -7,18 +6,15 @@ pre {
     overflow-x: auto;         /* Горизонтальная прокрутка при необходимости */
 }
 
-span {
-    color: #333;              /* Основной цвет текста */
-    font-weight: bold;        /* Жирный текст */
-}
 
 code {
-    background-color: #e8e8e8; /* Светло-серый фон для кода */
     padding: 2px 4px;          /* Небольшой отступ */
     border-radius: 3px;        /* Скругленные углы */
     font-family: 'Courier New', Courier, monospace; /* Моноширинный шрифт */
     font-size: 13px;           /* Размер шрифта */
 }
+
+
 pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
