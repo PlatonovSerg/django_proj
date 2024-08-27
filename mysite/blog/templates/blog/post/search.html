@@ -21,7 +21,7 @@
     {% empty %}
         <p>Нет результатов по запросу</p>
     {% endfor %}
-    <p><a href="{% url "blog:post_search" %}" class="btn btn-primary">Искать заново</a></p>
+    <p><a href="{% url "blog:post_search" %}" class="btn btn-dark">Искать заново</a></p>
 {% else %}
     <h1>Поиск постов</h1>
     <form method="get" class="form-inline">
