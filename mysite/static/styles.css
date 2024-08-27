@@ -8,12 +8,14 @@ pre {
 
 
 code {
-    padding: 2px 4px;          /* Небольшой отступ */
     border-radius: 3px;        /* Скругленные углы */
     font-family: 'Courier New', Courier, monospace; /* Моноширинный шрифт */
     font-size: 13px;           /* Размер шрифта */
 }
 
+button {
+    float: right;
+}
 
 pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
