@@ -3,6 +3,7 @@ from django.contrib.postgres.search import (SearchQuery, SearchRank,
 from django.core.mail import send_mail
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Count, Q
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_POST
 from django.views.generic import ListView
@@ -141,4 +142,12 @@ def post_search(request):
         request,
         "blog/post/search.html",
         {"form": form, "query": query, "results": results},
+    )
+
+
+def health_check(request):
+    """Health check endpoint that responds in Russian"""
+    return HttpResponse(
+        "Да, работаю! (Yes, I'm working!)",
+        content_type="text/plain; charset=utf-8"
     )

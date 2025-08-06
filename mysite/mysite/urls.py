@@ -1,4 +1,5 @@
 from blog.sitemaps import PostSitemap
+from blog.views import health_check
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -12,6 +13,7 @@ sitemaps = {
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("blog/", include("blog.urls", namespace="blog")),
+    path("health/", health_check, name="health_check"),
     path(
         "sitemap.xml",
         sitemap,

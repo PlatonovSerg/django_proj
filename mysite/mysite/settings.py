@@ -63,6 +63,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "mysite.wsgi.application"
 
 
+# For development, use SQLite when no PostgreSQL available
 # if DEBUG is True:
 #     DATABASES = {
 #         "default": {
